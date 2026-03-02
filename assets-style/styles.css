@@ -68,8 +68,8 @@ body {
 }
 
 .nav-links a:hover {
-	background: #293c5c;
-	color: #f8fafc;
+	background: #b9c7dd;
+	color: #facc15;
 }
 
 .burger-btn {
@@ -167,13 +167,13 @@ body {
 }
 
 .navbar.scrolled.menu-open .nav-links a:hover {
-	background: #316a61;
-	color: #f8fafc;
+	background: #b9c7dd;
+	color: #facc15;
 }
 
 .navbar.compact.menu-open .nav-links a:hover {
-	background: #316a61;
-	color: #f8fafc;
+	background: #b9c7dd;
+	color: #facc15;
 }
 
 main {
@@ -197,6 +197,19 @@ section.reveal-section {
 section.reveal-section.is-visible {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+section.nav-click-fade {
+	animation: navClickFade 0.55s ease;
+}
+
+@keyframes navClickFade {
+	from {
+		opacity: 0.25;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 #hero {
@@ -304,5 +317,9 @@ p {
 		opacity: 1;
 		transform: none;
 		transition: none;
+	}
+
+	section.nav-click-fade {
+		animation: none;
 	}
 }

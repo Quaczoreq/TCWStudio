@@ -49,7 +49,19 @@ if (navbar && burgerButton && navLinks) {
 	});
 
 	navLinks.querySelectorAll("a").forEach((link) => {
-		link.addEventListener("click", () => closeMenu(true));
+		link.addEventListener("click", () => {
+			closeMenu(true);
+
+			const href = link.getAttribute("href");
+			if (!href || !href.startsWith("#")) return;
+
+			const targetSection = document.querySelector(href);
+			if (!(targetSection instanceof HTMLElement)) return;
+
+			targetSection.classList.remove("nav-click-fade");
+			void targetSection.offsetWidth;
+			targetSection.classList.add("nav-click-fade");
+		});
 	});
 
 	document.addEventListener("click", (event) => {
