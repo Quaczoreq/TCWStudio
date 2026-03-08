@@ -73,6 +73,21 @@ if (navbar && burgerButton && navLinks) {
 }
 
 const sectionsToReveal = document.querySelectorAll("main section");
+const studioBanner = document.querySelector(".studio-banner");
+
+if (studioBanner instanceof HTMLElement) {
+	const updateBannerBlend = () => {
+		const fadeDistance = 180;
+		const progress = Math.min(window.scrollY / fadeDistance, 1);
+		studioBanner.style.opacity = String(1 - progress);
+		studioBanner.style.transform = `translateY(${-14 * progress}px)`;
+		studioBanner.style.pointerEvents = progress > 0.96 ? "none" : "auto";
+	};
+
+	window.addEventListener("scroll", updateBannerBlend, { passive: true });
+	window.addEventListener("load", updateBannerBlend);
+	window.addEventListener("resize", updateBannerBlend);
+}
 
 if (sectionsToReveal.length > 0) {
 	sectionsToReveal.forEach((section) => {

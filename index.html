@@ -9,7 +9,6 @@
 	<body>
 		<header class="navbar">
 			<div class="container navbar-inner">
-				<div class="brand">TCW Studio</div>
 				<nav class="nav-links" id="navLinks" aria-label="Primary">
 					<a href="#hero">Home</a>
 					<a href="#live-podcast">Live Podcast</a>
@@ -31,30 +30,72 @@
 			</div>
 		</header>
 
+		<section class="studio-banner" aria-label="Studio title banner">
+			<div class="studio-banner-inner">TCW Studio</div>
+		</section>
+
 		<main class="container">
 			<section id="hero">
 				<p>Welcome to your hub for live sessions, revision resources, coding practice, and clear learning road maps.</p>
 			</section>
 
-			<section id="live-podcast">
-				<h2>Live Podcast</h2>
-				<p>Add your latest stream schedule, topics, and playback links here.</p>
-			</section>
+			<div class="cards-grid" aria-label="Studio highlights">
+				<section id="live-podcast" class="feature-card">
+					<h2 class="card-title">
+						<span class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false">
+								<rect x="9" y="3" width="6" height="10" rx="3"></rect>
+								<path d="M7 10a5 5 0 1 0 10 0"></path>
+								<path d="M12 16v5"></path>
+								<path d="M9 21h6"></path>
+							</svg>
+						</span>
+						<span class="card-title-text">Live Podcast</span>
+					</h2>
+					<p>Add your latest stream schedule, topics, and playback links here.</p>
+				</section>
 
-			<section id="wise-to-revise">
-				<h2>Wise to Revise</h2>
-				<p>Use this section for revision notes, quick summaries, and exam-focused resources.</p>
-			</section>
+				<section id="wise-to-revise" class="feature-card">
+					<h2 class="card-title">
+						<span class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false">
+								<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"></path>
+								<path d="M7 7h9"></path>
+								<path d="M7 11h9"></path>
+							</svg>
+						</span>
+						<span class="card-title-text">Wise to Revise</span>
+					</h2>
+					<p>Use this section for revision notes, quick summaries, and exam-focused resources.</p>
+				</section>
 
-			<section id="coding">
-				<h2>Coding</h2>
-				<p>Showcase coding tutorials, project walk-throughs, and challenge tracks.</p>
-			</section>
+				<section id="coding" class="feature-card">
+					<h2 class="card-title">
+						<span class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false">
+								<path d="M8 9 4 12l4 3"></path>
+								<path d="m16 9 4 3-4 3"></path>
+								<path d="m14 6-4 12"></path>
+							</svg>
+						</span>
+						<span class="card-title-text">Coding</span>
+					</h2>
+					<p>Showcase coding tutorials, project walk-throughs, and challenge tracks.</p>
+				</section>
 
-			<section id="road-maps">
-				<h2>Road Maps</h2>
-				<p>Present step-by-step pathways for topics, skills, and career growth.</p>
-			</section>
+				<section id="road-maps" class="feature-card">
+					<h2 class="card-title">
+						<span class="card-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false">
+								<circle cx="12" cy="12" r="8"></circle>
+								<path d="m10 14 2-6 2 4-4 2"></path>
+							</svg>
+						</span>
+						<span class="card-title-text">Road Maps</span>
+					</h2>
+					<p>Present step-by-step pathways for topics, skills, and career growth.</p>
+				</section>
+			</div>
 
 			<section id="contact-us">
 				<h2>Contact Us</h2>
