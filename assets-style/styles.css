@@ -48,19 +48,19 @@ body::before {
 .navbar {
 	position: sticky;
 	top: 0;
-	z-index: 10;
-	background: rgba(17, 24, 39, 0.95);
-	backdrop-filter: blur(6px);
-	border-bottom: 1px solid #7a7a7a;
+	z-index: 1000;
+	background: transparent;
+	backdrop-filter: none;
+	border-bottom: none;
 	transition: background-color 0.3s ease;
 }
 
 .navbar.scrolled {
-	background: rgba(17, 24, 39, 0.5);
+	background: transparent;
 }
 
 .navbar.compact {
-	background: rgba(17, 24, 39, 0.5);
+	background: transparent;
 }
 
 .navbar-inner {
@@ -192,7 +192,8 @@ body::before {
 .navbar.compact.menu-open .nav-links {
 	position: absolute;
 	right: 0;
-	top: calc(100% + 0.45rem);
+	top: 100%;
+	margin-top: 0.45rem;
 	flex-direction: column;
 	align-items: flex-start;
 	background: rgba(17, 24, 39, 0.98);
@@ -200,7 +201,7 @@ body::before {
 	border: 1px solid #374151;
 	border-radius: 10px;
 	gap: 0.6rem;
-	z-index: 20;
+	z-index: 1100;
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
@@ -296,6 +297,15 @@ section {
 section:hover {
 	animation: shake 0.5s ease-in-out;
 	box-shadow: 0 0 20px rgba(137, 162, 56, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+#hero:hover {
+	animation: none;
+}
+
+.studio-banner:hover {
+	animation: none;
+	box-shadow: none;
 }
 
 @keyframes shake {
