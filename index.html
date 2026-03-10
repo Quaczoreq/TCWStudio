@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
 		<meta http-equiv="Referrer-Policy" content="no-referrer" />
 		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 		<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self)" />
@@ -168,12 +168,9 @@
 				<div id="contactAccordionPanel" class="contact-accordion-panel" hidden>
 					<p>Reach out for collaborations, questions, or support from The Cloud Workshop Studio.</p>
 					<p id="form-success-message" class="form-success-message" role="status" aria-live="polite" hidden>
-						Thank you for your enquiry You will be redirected to the right department and we will contact You shortly.
+						Thank you for your enquiry. We will contact you shortly.
 					</p>
-					<form class="contact-form" action="https://formsubmit.co/admin@thecloudworkshop.tech" method="post">
-						<input type="hidden" name="_subject" value="New TCW Studio Contact Form Message" />
-						<input type="hidden" name="_captcha" value="false" />
-						<input type="hidden" name="_next" value="https://thecloudworkshop.tech/?submitted=1#contact-us" />
+					<form class="contact-form" id="contact-form" novalidate>
 						<label for="contact-name">Name</label>
 						<input id="contact-name" name="name" type="text" autocomplete="name" required />
 
