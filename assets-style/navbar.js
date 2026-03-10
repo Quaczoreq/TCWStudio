@@ -126,12 +126,33 @@ if (sectionsToReveal.length > 0) {
 }
 
 const contactSuccessMessage = document.getElementById("form-success-message");
+const contactAccordionButton = document.getElementById("contactAccordionBtn");
+const contactAccordionPanel = document.getElementById("contactAccordionPanel");
+const contactSection = document.getElementById("contact-us");
+
+const setContactAccordionState = (open) => {
+	if (!(contactAccordionButton instanceof HTMLButtonElement)) return;
+	if (!(contactAccordionPanel instanceof HTMLElement)) return;
+	if (!(contactSection instanceof HTMLElement)) return;
+
+	contactAccordionButton.setAttribute("aria-expanded", String(open));
+	contactAccordionPanel.hidden = !open;
+	contactSection.classList.toggle("is-open", open);
+};
+
+if (contactAccordionButton instanceof HTMLButtonElement) {
+	contactAccordionButton.addEventListener("click", () => {
+		const isOpen = contactAccordionButton.getAttribute("aria-expanded") === "true";
+		setContactAccordionState(!isOpen);
+	});
+}
 
 if (contactSuccessMessage instanceof HTMLElement) {
 	const searchParams = new URLSearchParams(window.location.search);
 	const wasSubmitted = searchParams.get("submitted") === "1";
 
 	if (wasSubmitted) {
+		setContactAccordionState(true);
 		contactSuccessMessage.hidden = false;
 		history.replaceState({}, document.title, `${window.location.pathname}#contact-us`);
 	}
