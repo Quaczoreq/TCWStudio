@@ -75,6 +75,15 @@ if (navbar && burgerButton && navLinks) {
 const sectionsToReveal = document.querySelectorAll("main section");
 const studioBanner = document.querySelector(".studio-banner");
 
+const updatePageBackgroundShift = () => {
+	const shift = Math.min(window.scrollY * 0.08, 64);
+	document.body.style.setProperty("--page-bg-shift", `${shift}px`);
+};
+
+window.addEventListener("scroll", updatePageBackgroundShift, { passive: true });
+window.addEventListener("load", updatePageBackgroundShift);
+window.addEventListener("resize", updatePageBackgroundShift);
+
 if (studioBanner instanceof HTMLElement) {
 	const updateBannerBlend = () => {
 		const fadeDistance = 180;
@@ -113,5 +122,17 @@ if (sectionsToReveal.length > 0) {
 		sectionsToReveal.forEach((section) => {
 			section.classList.add("is-visible");
 		});
+	}
+}
+
+const contactSuccessMessage = document.getElementById("form-success-message");
+
+if (contactSuccessMessage instanceof HTMLElement) {
+	const searchParams = new URLSearchParams(window.location.search);
+	const wasSubmitted = searchParams.get("submitted") === "1";
+
+	if (wasSubmitted) {
+		contactSuccessMessage.hidden = false;
+		history.replaceState({}, document.title, `${window.location.pathname}#contact-us`);
 	}
 }
