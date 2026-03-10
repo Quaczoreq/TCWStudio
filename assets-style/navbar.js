@@ -150,6 +150,7 @@ if (sectionsToReveal.length > 0) {
 
 const contactSuccessMessage = document.getElementById("form-success-message");
 const contactForm = document.getElementById("contact-form");
+const contactIntroMessage = document.getElementById("contact-intro-message");
 const contactAccordionButton = document.getElementById("contactAccordionBtn");
 const contactAccordionPanel = document.getElementById("contactAccordionPanel");
 const contactSection = document.getElementById("contact-us");
@@ -228,9 +229,12 @@ if (contactForm instanceof HTMLFormElement) {
 
 		try {
 			await emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, templateParams);
-			showFormMessage("Thank you for your enquiry. We will contact you shortly.");
-			contactForm.reset();
-		} catch (error) {
+			showFormMessage("We received your message and will be in touch shortly.");
+			contactForm.hidden = true;
+			if (contactIntroMessage instanceof HTMLElement) {
+				contactIntroMessage.hidden = true;
+			}
+		} catch {
 			showFormMessage("Sorry, your message could not be sent. Please try again.", true);
 		}
 
