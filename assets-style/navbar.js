@@ -136,3 +136,32 @@ if (contactSuccessMessage instanceof HTMLElement) {
 		history.replaceState({}, document.title, `${window.location.pathname}#contact-us`);
 	}
 }
+
+document.addEventListener("contextmenu", (event) => {
+	event.preventDefault();
+});
+
+document.addEventListener("copy", (event) => {
+	event.preventDefault();
+});
+
+document.addEventListener("cut", (event) => {
+	event.preventDefault();
+});
+
+document.addEventListener("dragstart", (event) => {
+	event.preventDefault();
+});
+
+document.addEventListener("keydown", (event) => {
+	const key = event.key.toLowerCase();
+	const hasCtrlOrCmd = event.ctrlKey || event.metaKey;
+	const isDevToolsShortcut =
+		event.key === "F12" ||
+		(hasCtrlOrCmd && event.shiftKey && (key === "i" || key === "j" || key === "c")) ||
+		(hasCtrlOrCmd && key === "u");
+
+	if (isDevToolsShortcut) {
+		event.preventDefault();
+	}
+});
