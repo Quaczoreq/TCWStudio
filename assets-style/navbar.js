@@ -126,6 +126,7 @@ if (sectionsToReveal.length > 0) {
 }
 
 const contactSuccessMessage = document.getElementById("form-success-message");
+const contactForm = document.getElementById("contact-form");
 const contactAccordionButton = document.getElementById("contactAccordionBtn");
 const contactAccordionPanel = document.getElementById("contactAccordionPanel");
 const contactSection = document.getElementById("contact-us");
@@ -147,15 +148,74 @@ if (contactAccordionButton instanceof HTMLButtonElement) {
 	});
 }
 
-if (contactSuccessMessage instanceof HTMLElement) {
-	const searchParams = new URLSearchParams(window.location.search);
-	const wasSubmitted = searchParams.get("submitted") === "1";
+const showFormMessage = (message, isError = false) => {
+	if (!(contactSuccessMessage instanceof HTMLElement)) return;
+	contactSuccessMessage.textContent = message;
+	contactSuccessMessage.hidden = false;
+	contactSuccessMessage.style.borderColor = isError ? "rgba(255, 120, 120, 0.8)" : "rgba(255, 255, 255, 0.45)";
+	contactSuccessMessage.style.background = isError ? "rgba(120, 10, 10, 0.35)" : "rgba(17, 24, 39, 0.56)";
+};
 
-	if (wasSubmitted) {
-		setContactAccordionState(true);
-		contactSuccessMessage.hidden = false;
-		history.replaceState({}, document.title, `${window.location.pathname}#contact-us`);
+if (contactForm instanceof HTMLFormElement) {
+	const emailJsConfig = window.EMAILJS_CONFIG || {};
+	const hasValidConfig =
+		typeof emailjs !== "undefined" &&
+		emailJsConfig.publicKey &&
+		emailJsConfig.serviceId &&
+		emailJsConfig.templateId &&
+		emailJsConfig.publicKey !== "YOUR_PUBLIC_KEY" &&
+		emailJsConfig.serviceId !== "YOUR_SERVICE_ID" &&
+		emailJsConfig.templateId !== "YOUR_TEMPLATE_ID";
+
+	if (hasValidConfig) {
+		emailjs.init({ publicKey: emailJsConfig.publicKey });
 	}
+
+	contactForm.addEventListener("submit", async (event) => {
+		event.preventDefault();
+
+		if (!contactForm.checkValidity()) {
+			contactForm.reportValidity();
+			return;
+		}
+
+		setContactAccordionState(true);
+		if (contactSuccessMessage instanceof HTMLElement) {
+			contactSuccessMessage.hidden = true;
+		}
+
+		if (!hasValidConfig) {
+			showFormMessage("Email service is not configured yet. Add your EmailJS keys in index.html.", true);
+			return;
+		}
+
+		const submitButton = contactForm.querySelector('button[type="submit"]');
+		if (submitButton instanceof HTMLButtonElement) {
+			submitButton.disabled = true;
+			submitButton.textContent = "Sending...";
+		}
+
+		const formData = new FormData(contactForm);
+		const templateParams = {
+			from_name: String(formData.get("name") || ""),
+			from_email: String(formData.get("email") || ""),
+			topic: String(formData.get("topic") || ""),
+			message: String(formData.get("message") || "")
+		};
+
+		try {
+			await emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, templateParams);
+			showFormMessage("Thank you for your enquiry. We will contact you shortly.");
+			contactForm.reset();
+		} catch (error) {
+			showFormMessage("Sorry, your message could not be sent. Please try again.", true);
+		}
+
+		if (submitButton instanceof HTMLButtonElement) {
+			submitButton.disabled = false;
+			submitButton.textContent = "Send Message";
+		}
+	});
 }
 
 document.addEventListener("contextmenu", (event) => {
