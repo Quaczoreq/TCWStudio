@@ -2,6 +2,14 @@ const navbar = document.querySelector(".navbar");
 const burgerButton = document.getElementById("burgerBtn");
 const navLinks = document.getElementById("navLinks");
 
+if ("scrollRestoration" in history) {
+	history.scrollRestoration = "manual";
+}
+
+window.addEventListener("pageshow", () => {
+	window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+});
+
 if (navbar && burgerButton && navLinks) {
 	const compactMediaQuery = window.matchMedia("(max-width: 900px)");
 
@@ -48,8 +56,20 @@ if (navbar && burgerButton && navLinks) {
 		burgerButton.setAttribute("aria-expanded", String(willOpen));
 	});
 
+	const scrollToSectionBelowNavbar = (targetSection, hash) => {
+		const navbarOffset = navbar.getBoundingClientRect().height + 12;
+		const targetY = targetSection.getBoundingClientRect().top + window.scrollY - navbarOffset;
+
+		window.scrollTo({
+			top: Math.max(0, targetY),
+			behavior: "smooth"
+		});
+
+		history.replaceState({}, document.title, hash);
+	};
+
 	navLinks.querySelectorAll("a").forEach((link) => {
-		link.addEventListener("click", () => {
+		link.addEventListener("click", (event) => {
 			closeMenu(true);
 
 			const href = link.getAttribute("href");
@@ -57,6 +77,9 @@ if (navbar && burgerButton && navLinks) {
 
 			const targetSection = document.querySelector(href);
 			if (!(targetSection instanceof HTMLElement)) return;
+
+			event.preventDefault();
+			scrollToSectionBelowNavbar(targetSection, href);
 
 			targetSection.classList.remove("nav-click-fade");
 			void targetSection.offsetWidth;
