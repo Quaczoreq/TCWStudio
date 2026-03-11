@@ -240,6 +240,8 @@ if (contactForm instanceof HTMLFormElement) {
 
 		const formData = new FormData(contactForm);
 		const templateParams = {
+			user_name: String(formData.get("name") || ""),
+			user_email: String(formData.get("email") || ""),
 			from_name: String(formData.get("name") || ""),
 			from_email: String(formData.get("email") || ""),
 			topic: String(formData.get("topic") || ""),
