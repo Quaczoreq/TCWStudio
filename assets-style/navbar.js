@@ -151,9 +151,28 @@ if (sectionsToReveal.length > 0) {
 const contactSuccessMessage = document.getElementById("form-success-message");
 const contactForm = document.getElementById("contact-form");
 const contactIntroMessage = document.getElementById("contact-intro-message");
+const newsletterForm = document.querySelector(".newsletter-form");
+const newsletterSuccessMessage = document.getElementById("newsletter-success-message");
 const contactAccordionButton = document.getElementById("contactAccordionBtn");
 const contactAccordionPanel = document.getElementById("contactAccordionPanel");
 const contactSection = document.getElementById("contact-us");
+
+if (newsletterForm instanceof HTMLFormElement) {
+	newsletterForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		if (!newsletterForm.checkValidity()) {
+			newsletterForm.reportValidity();
+			return;
+		}
+
+		if (newsletterSuccessMessage instanceof HTMLElement) {
+			newsletterSuccessMessage.hidden = false;
+		}
+
+		newsletterForm.reset();
+	});
+}
 
 const setContactAccordionState = (open) => {
 	if (!(contactAccordionButton instanceof HTMLButtonElement)) return;
