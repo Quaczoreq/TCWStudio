@@ -95,7 +95,6 @@ if (navbar && burgerButton && navLinks) {
 	});
 }
 
-const sectionsToReveal = document.querySelectorAll("main section");
 const studioBanner = document.querySelector(".studio-banner");
 
 const updatePageBackgroundShift = () => {
@@ -119,33 +118,6 @@ if (studioBanner instanceof HTMLElement) {
 	window.addEventListener("scroll", updateBannerBlend, { passive: true });
 	window.addEventListener("load", updateBannerBlend);
 	window.addEventListener("resize", updateBannerBlend);
-}
-
-if (sectionsToReveal.length > 0) {
-	sectionsToReveal.forEach((section) => {
-		section.classList.add("reveal-section");
-	});
-
-	if ("IntersectionObserver" in window) {
-		const revealObserver = new IntersectionObserver(
-			(entries, observer) => {
-				entries.forEach((entry) => {
-					if (!entry.isIntersecting) return;
-					entry.target.classList.add("is-visible");
-					observer.unobserve(entry.target);
-				});
-			},
-			{ threshold: 0.18 }
-		);
-
-		sectionsToReveal.forEach((section) => {
-			revealObserver.observe(section);
-		});
-	} else {
-		sectionsToReveal.forEach((section) => {
-			section.classList.add("is-visible");
-		});
-	}
 }
 
 const contactSuccessMessage = document.getElementById("form-success-message");
