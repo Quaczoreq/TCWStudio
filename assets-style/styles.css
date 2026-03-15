@@ -1,3 +1,21 @@
+#road-maps {
+	position: relative;
+}
+#road-maps::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: url('../assets/images/roadmaps.png') no-repeat center center;
+	background-size: cover;
+	opacity: 0.6;
+	z-index: 0;
+	border-radius: inherit;
+	pointer-events: none;
+}
+#road-maps > * {
+	position: relative;
+	z-index: 1;
+}
 /* Base tokens */
 :root {
 	--bg: #0f172a;
@@ -527,10 +545,6 @@ section.nav-click-fade {
 	z-index: 0;
 }
 
-#floating-cards > * {
-	position: relative;
-	z-index: 1;
-}
 
 #floating-cards h2 {
 	position: relative;
@@ -561,7 +575,6 @@ section.nav-click-fade {
 	margin-top: 0.45rem;
 	padding-top: 0.35rem;
 	overflow: hidden;
-	mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
 }
 
 .floating-track {
@@ -581,7 +594,7 @@ section.nav-click-fade {
 	height: clamp(110px, 14vw, 140px);
 	padding: 0.7rem;
 	border-radius: 12px;
-	border: 1px solid rgba(123, 168, 255, 0.5);
+	border: none;
 	background: rgba(12, 17, 28, 0.78);
 	color: #ffffff;
 	font-weight: 700;
@@ -628,9 +641,9 @@ section.nav-click-fade {
 }
 
 .floating-card:hover {
-	animation-play-state: paused;
-	border-color: #ff9f2f;
-	box-shadow: 0 0 0 2px rgba(255, 159, 47, 0.58), 0 8px 20px rgba(0, 0, 0, 0.28);
+	 animation-play-state: paused;
+	 border: 2px solid rgba(137, 162, 56, 0.95);
+	 box-shadow: 0 0 0 2px rgba(137, 162, 56, 0.18), 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 @keyframes floatingCardsLoop {
