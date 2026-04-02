@@ -1,20 +1,92 @@
+/* Accordion More button styling to match navbar */
+.card-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 0 0 auto;
+	color: var(--text);
+	background: transparent;
+	border: 1px solid #2c384d;
+	border-radius: 6px;
+	padding: 0.22rem 0.56rem;
+	font-size: 0.95rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	cursor: pointer;
+	transition: background-color 0.45s ease, color 0.45s ease;
+}
+.card-toggle:hover {
+	background: #89a238;
+	color: rgba(17, 24, 39, 0.95);
+}
+.card-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	position: relative;
+}
+.card-title-text {
+	align-self: auto;
+	flex: 1;
+}
 .feature-card, .feature-card .card-title, .feature-card .card-title-text, .feature-card p {
 	color: #fff !important;
 }
+#live-podcast,
+#wise-to-revise,
+#coding,
 #road-maps {
 	position: relative;
+	isolation: isolate;
 }
+
+#live-podcast::before,
+#wise-to-revise::before,
+#coding::before,
 #road-maps::before {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: url('../assets/images/roadmaps.png') no-repeat center center;
+	background-repeat: no-repeat;
+	background-position: center center;
 	background-size: cover;
-	opacity: 0.6;
 	z-index: 0;
 	border-radius: inherit;
 	pointer-events: none;
 }
+
+#live-podcast::before {
+	background-image:
+		linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.72)),
+		url('../assets/images/livepd.png');
+	opacity: 0.9;
+}
+
+#wise-to-revise::before {
+	background-image:
+		linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.68)),
+		url('../assets/images/w2r.png');
+	opacity: 0.88;
+}
+
+#coding::before {
+	background-image:
+		linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.7)),
+		url('../assets/images/code.png');
+	opacity: 0.9;
+}
+
+#road-maps::before {
+	background-image:
+		linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.65)),
+		url('../assets/images/roadmaps.png');
+	opacity: 0.75;
+}
+
+#live-podcast > *,
+#wise-to-revise > *,
+#coding > *,
 #road-maps > * {
 	position: relative;
 	z-index: 1;
@@ -81,6 +153,7 @@ body::before {
 	background: rgba(17, 24, 39, 0.38);
 }
 
+/* Make navbar-inner 2x the width of nav-links and center it */
 .navbar-inner {
 	display: flex;
 	align-items: center;
@@ -88,7 +161,24 @@ body::before {
 	padding: 0.62rem 0;
 	position: relative;
 	padding-right: 0;
+	width: fit-content;
+	min-width: calc(2 * (var(--nav-links-width, 0px)));
+	margin: 0 auto;
 }
+
+/* Set nav-links to shrink to fit its content and expose its width as a CSS variable */
+.nav-links {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: max-content;
+	opacity: 1;
+	transform: scale(1);
+	transform-origin: right center;
+	transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
 
 .studio-banner {
 	padding: 0.9rem 0 0.65rem;
@@ -97,6 +187,7 @@ body::before {
 	box-shadow: none;
 	text-align: center;
 	margin-bottom: 0;
+	margin-top: auto;
 }
 
 .studio-banner-inner {
@@ -297,16 +388,20 @@ main {
 	margin-bottom: 2rem;
 }
 
-.feature-card {
+ .feature-card {
 	width: 80vw;
 	max-width: 80vw;
 	min-width: 320px;
 	margin: 0 auto;
+	border: 1px solid rgba(137, 162, 56, 0.9);
 	border-radius: 12px;
 	box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 	overflow: hidden;
 	transition: box-shadow 0.2s;
 	cursor: pointer;
+	/* Reduce vertical padding for smaller height */
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 .feature-card[aria-expanded="false"] .card-content {
 	display: none;
@@ -314,19 +409,21 @@ main {
 .feature-card[aria-expanded="true"] .card-content {
 	display: block;
 }
-.feature-card .card-title {
+ .feature-card .card-title {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	padding: 1.2rem 1.5rem;
-	font-size: 1.25rem;
+	gap: 0.85rem;
+	padding: 0.85rem 1.2rem 0.85rem 3.4rem;
+	font-size: 1.7rem;
 	background: none;
 	border: none;
 	outline: none;
 	cursor: pointer;
 	text-align: left;
 	position: relative;
+	min-height: 78px;
 }
 .feature-card .accordion-icon {
 	font-size: 1.5rem;
@@ -336,8 +433,8 @@ main {
 .feature-card[aria-expanded="true"] .accordion-icon {
 	transform: rotate(90deg);
 }
-.feature-card .card-content {
-	padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+ .feature-card .card-content {
+	padding: 0.7rem 1.2rem 1rem 1.2rem;
 	background: transparent;
 	color: #fff;
 	font-size: 1rem;
@@ -345,9 +442,8 @@ main {
 
 .feature-card .card-title {
 	position: relative;
-	display: block;
-	text-align: center;
-	padding-left: 2.8rem;
+	font-size: 2rem;
+	line-height: 1.2;
 }
 
 .feature-card .card-title:hover {
@@ -355,7 +451,8 @@ main {
 }
 
 .feature-card .card-title .card-title-text {
-	display: inline-block;
+	display: block;
+	text-align: left;
 }
 
 .feature-card .card-title:hover .card-title-text {
@@ -396,7 +493,7 @@ section {
 }
 
 section:hover {
-	/* animation: shake 0.5s ease-in-out; */
+	animation: shake 0.5s ease-in-out;
 	box-shadow: 0 0 20px rgba(137, 162, 56, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -625,7 +722,7 @@ section.nav-click-fade {
 	display: flex;
 	gap: 0.99rem;
 	width: max-content;
-	animation: floatingCardsLoop 22s linear infinite;
+	animation: floatingCardsLoop 22s ease-in-out infinite alternate;
 }
 
 .floating-loop:hover .floating-track {
@@ -800,11 +897,15 @@ section.nav-click-fade {
 .newsletter-inner h2 {
 	color: #ffffff;
 	margin-bottom: 0.45rem;
+	text-shadow: none;
+	filter: none;
 }
 
 .newsletter-inner p {
 	color: #d1d5db;
 	margin-bottom: 1rem;
+	text-shadow: none;
+	filter: none;
 }
 
 .newsletter-form {
@@ -1173,6 +1274,7 @@ section.nav-click-fade {
 	}
 
 	#hero {
+		margin-top: 5rem;
 		padding: 2rem 0;
 	}
 
