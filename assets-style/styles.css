@@ -4,19 +4,25 @@
 	align-items: center;
 	justify-content: center;
 	margin: 0 0 0 auto;
-	color: var(--text);
-	background: transparent;
-	border: 1px solid #2c384d;
+	color: #cfe081;
+	background: rgba(137, 162, 56, 0.14);
+	border: 1px solid rgba(137, 162, 56, 0.9);
 	border-radius: 6px;
 	padding: 0.22rem 0.56rem;
 	font-size: 0.95rem;
 	white-space: nowrap;
 	flex-shrink: 0;
 	cursor: pointer;
-	transition: background-color 0.45s ease, color 0.45s ease;
+	transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease;
 }
 .card-toggle:hover {
 	background: #89a238;
+	border-color: #cfe081;
+	color: rgba(17, 24, 39, 0.95);
+}
+.feature-card[aria-expanded="true"] .card-toggle {
+	background: #89a238;
+	border-color: #cfe081;
 	color: rgba(17, 24, 39, 0.95);
 }
 .card-title {
@@ -165,20 +171,6 @@ body::before {
 	min-width: calc(2 * (var(--nav-links-width, 0px)));
 	margin: 0 auto;
 }
-
-/* Set nav-links to shrink to fit its content and expose its width as a CSS variable */
-.nav-links {
-	display: flex;
-	gap: 0.5rem;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: max-content;
-	opacity: 1;
-	transform: scale(1);
-	transform-origin: right center;
-	transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
 
 .studio-banner {
 	padding: 0.9rem 0 0.65rem;
@@ -425,14 +417,6 @@ main {
 	position: relative;
 	min-height: 78px;
 }
-.feature-card .accordion-icon {
-	font-size: 1.5rem;
-	margin-left: 1rem;
-	transition: transform 0.2s;
-}
-.feature-card[aria-expanded="true"] .accordion-icon {
-	transform: rotate(90deg);
-}
  .feature-card .card-content {
 	padding: 0.7rem 1.2rem 1rem 1.2rem;
 	background: transparent;
@@ -512,17 +496,6 @@ section:hover {
 	70% { transform: translate(-2px, -2px) rotate(-0.5deg); }
 	80% { transform: translate(1px, 2px) rotate(0.5deg); }
 	90% { transform: translate(-1px, -1px) rotate(-0.5deg); }
-}
-
-section.reveal-section {
-	opacity: 0;
-	transform: translateY(18px);
-	transition: opacity 0.75s ease, transform 0.75s ease;
-}
-
-section.reveal-section.is-visible {
-	opacity: 1;
-	transform: translateY(0);
 }
 
 section.nav-click-fade {
@@ -751,26 +724,6 @@ section.nav-click-fade {
 	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
 	transform: translateY(0);
 	animation: floatingCardBob 2.6s ease-in-out infinite;
-}
-
-.team-icon {
-	width: 2rem;
-	height: 2rem;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	color: #ffffff;
-	opacity: 0.95;
-}
-
-.team-icon svg {
-	width: 100%;
-	height: 100%;
-	fill: none;
-	stroke: currentColor;
-	stroke-width: 1.8;
-	stroke-linecap: round;
-	stroke-linejoin: round;
 }
 
 .floating-card:nth-child(2n) {
@@ -1146,12 +1099,16 @@ section.nav-click-fade {
 }
 
 /* Typography and footer */
-.hero-prefix {
+.hero-prefix,
+.hero-subtext {
 	display: block;
 	width: fit-content;
-	margin: 0 auto 0.35rem;
 	transform: scaleX(1.3);
 	transform-origin: center;
+}
+
+.hero-prefix {
+	margin: 0 auto 0.35rem;
 }
 
 .hero-emphasis {
@@ -1162,6 +1119,11 @@ section.nav-click-fade {
 	letter-spacing: 0.05em;
 	line-height: 0.98;
 	text-transform: uppercase;
+}
+
+.hero-subtext {
+	margin: 0.4rem auto 0;
+	color: #ffffff;
 }
 
 .hero-flicker {
@@ -1529,12 +1491,6 @@ p {
 	.hero-logo-shell::before,
 	.hero-logo-shell::after {
 		animation: none;
-	}
-
-	section.reveal-section {
-		opacity: 1;
-		transform: none;
-		transition: none;
 	}
 
 	section.nav-click-fade {
