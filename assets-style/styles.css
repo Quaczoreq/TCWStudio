@@ -1,8 +1,25 @@
-/* Custom margin for Our Mission section */
+/* Our Mission card styling */
 #our-mission {
-	margin-left: 15%;
-	margin-right: 15%;
+	margin: 4rem 18%;
 }
+
+#our-mission > div {
+	background: var(--card);
+	border: 1px solid #89a238;
+	border-radius: 14px;
+	padding: 2rem 2.25rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#our-mission h2 {
+	margin-top: 0;
+	margin-bottom: 0.85rem;
+	text-align: center;
+}
+
+
+
+
 /* Accordion More button styling to match navbar */
 .card-toggle {
 	display: inline-flex;
