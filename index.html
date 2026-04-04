@@ -12,11 +12,12 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/logoTCWS.png" />
 		<link rel="shortcut icon" href="assets/images/logoTCWS-favicon.svg?v=2" />
 		<link rel="apple-touch-icon" href="assets/images/logoTCWS.png" />
-		<link rel="stylesheet" href="assets-style/styles.css" />
-		<script defer src="assets-style/accordion.js"></script>
+		<link rel="preload" href="assets-style/styles.min.css" as="style" onload="this.rel='stylesheet'">
+		<link rel="stylesheet" href="assets-style/styles.min.css">
+		<script defer src="assets-style/accordion.min.js"></script>
 	</head>
 <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-V5GN2CHV41"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-V5GN2CHV41'); </script>
-	<body>
+	<body style="font-display: swap;">
 <!-- Top nav-bar -->
 		<header class="navbar">
 			<div class="container navbar-inner">
@@ -54,7 +55,7 @@
 				<div class="hero-content">
 					<span class="hero-wide-lines" aria-hidden="true"></span>
 					<div class="hero-logo-shell">
-						<img class="hero-logo" src="assets/images/logoCL.png" alt="The Cloud Workshop logo" />
+						<img class="hero-logo" src="assets/images/logoCL.webp" alt="The Cloud Workshop logo" loading="lazy" />
 					</div>
 					<p>
 						<span class="hero-prefix">We can hear you</span>
@@ -65,7 +66,7 @@
 								<span class="flicker-char" style="--flicker-delay: 0.33s; --flicker-duration: 1.2s">U</span>
 								<span class="flicker-char" style="--flicker-delay: 0.48s; --flicker-duration: 1.4s">D</span>
 							</span>
-							<span class="hero-flicker-amp" aria-hidden="true">&amp;</span>
+							<span class="flicker-char" style="--flicker-delay: 0.6s; --flicker-duration: 1.2s">&amp;</span>
 							<span class="hero-flicker-word" aria-hidden="true">
 								<span class="flicker-char" style="--flicker-delay: 0.1s; --flicker-duration: 1.25s">C</span>
 								<span class="flicker-char" style="--flicker-delay: 0.25s; --flicker-duration: 1.12s">L</span>
@@ -74,7 +75,7 @@
 								<span class="flicker-char" style="--flicker-delay: 0.7s; --flicker-duration: 1.3s">R</span>
 							</span>
 						</span>
-						<span class="hero-subtext">we deliver</span>
+						<span class="hero-subtext">-- and we deliver --</span>
 					</p>
 				</div>
 			</section>
@@ -154,37 +155,35 @@
 			<section id="floating-cards" aria-label="Community highlights carousel">
 				<h2>Meet the Team</h2>
 				<div class="floating-loop" role="presentation">
+					
 					<div class="floating-track">
-						<article class="floating-card" style="background-image: url('assets/images/john card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/tony card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/Jordan\ card.jpg'); background-size: cover; background-position: center;"></article>
+						<a class="floating-card" href="https://www.linkedin.com/in/johnfairest/" target="_blank" rel="noopener noreferrer" aria-label="John Fairest LinkedIn" style="background-image: url('assets/images/john card.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/tony-willis-5a0630356/" target="_blank" rel="noopener noreferrer" aria-label="Tony Willis LinkedIn" style="background-image: url('assets/images/tony card.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/jordan-wright-123456789/" target="_blank" rel="noopener noreferrer" aria-label="Jordan Wright LinkedIn" style="background-image: url('assets/images/Jordan card.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/scott-johnson-3a869a147/" target="_blank" rel="noopener noreferrer" aria-label="Scott Johnson LinkedIn" style="background-image: url('assets/images/scot card.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/fulden-cetin-71064826" target="_blank" rel="noopener noreferrer" aria-label="Fulden Cetin LinkedIn" style="background-image: url('assets/images/Fulden card2.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/katarzyna-opozda-511558150" target="_blank" rel="noopener noreferrer" aria-label="Katarzyna Opozda LinkedIn" style="background-image: url('assets/images/kat card.webp'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/johnfairest/" target="_blank" rel="noopener noreferrer" aria-label="John Fairest LinkedIn" style="background-image: url('assets/images/john card.png'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/tony-willis-5a0630356/" target="_blank" rel="noopener noreferrer" aria-label="Tony Willis LinkedIn" style="background-image: url('assets/images/tony card.png'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/jordan-wright-123456789/" target="_blank" rel="noopener noreferrer" aria-label="Jordan Wright LinkedIn" style="background-image: url('assets/images/Jordan card.jpg'); background-size: cover; background-position: center;"></a>
 						<a class="floating-card" href="https://www.linkedin.com/in/scott-johnson-3a869a147/" target="_blank" rel="noopener noreferrer" aria-label="Scott Johnson LinkedIn" style="background-image: url('assets/images/scot card.png'); background-size: cover; background-position: center;"></a>
-						<article class="floating-card" style="background-image: url('assets/images/Fulden card2.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/kat card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/john card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/tony card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/Jordan\ card.jpg'); background-size: cover; background-position: center;"></article>
-						<a class="floating-card" href="https://www.linkedin.com/in/scott-johnson-3a869a147/" target="_blank" rel="noopener noreferrer" aria-label="Scott Johnson LinkedIn" style="background-image: url('assets/images/scot card.png'); background-size: cover; background-position: center;"></a>
-						<article class="floating-card" style="background-image: url('assets/images/Fulden card2.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/kat card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/john card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/tony card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/Jordan\ card.jpg'); background-size: cover; background-position: center;"></article>
-						<a class="floating-card" href="https://www.linkedin.com/in/scott-johnson-3a869a147/" target="_blank" rel="noopener noreferrer" aria-label="Scott Johnson LinkedIn" style="background-image: url('assets/images/scot card.png'); background-size: cover; background-position: center;"></a>
-						<article class="floating-card" style="background-image: url('assets/images/Fulden card2.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/kat card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/john card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/tony card.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/Jordan\ card.jpg'); background-size: cover; background-position: center;"></article>
-						<a class="floating-card" href="https://www.linkedin.com/in/scott-johnson-3a869a147/" target="_blank" rel="noopener noreferrer" aria-label="Scott Johnson LinkedIn" style="background-image: url('assets/images/scot card.png'); background-size: cover; background-position: center;"></a>
-						<article class="floating-card" style="background-image: url('assets/images/Fulden card2.png'); background-size: cover; background-position: center;"></article>
-						<article class="floating-card" style="background-image: url('assets/images/kat card.png'); background-size: cover; background-position: center;"></article>
+						<a class="floating-card" href="https://www.linkedin.com/in/fulden-cetin-71064826" target="_blank" rel="noopener noreferrer" aria-label="Fulden Cetin LinkedIn" style="background-image: url('assets/images/Fulden card2.png'); background-size: cover; background-position: center;"></a>
+						<a class="floating-card" href="https://www.linkedin.com/in/katarzyna-opozda-511558150" target="_blank" rel="noopener noreferrer" aria-label="Katarzyna Opozda LinkedIn" style="background-image: url('assets/images/kat card.png'); background-size: cover; background-position: center;"></a>
+						
 					</div>
 				</div>
 			</section>
+<!-- Mission statement -->			
+			<div id="our-mission" aria-label="Our Mission">
+			<div  aria-label="Our Mission">
+				<h2>Our Mission</h2>
+				<p>At The Cloud Workshop Studio, our mission is to empower learners of all ages and backgrounds to thrive in the digital age. We are dedicated to providing accessible, engaging, and high-quality educational content that demystifies technology and fosters a passion for learning. Through our diverse range of streams, tutorials, and resources, we aim to build a vibrant community where knowledge is shared freely, creativity is encouraged, and everyone has the opportunity to succeed in their tech journey.</p>
+			</div>
+			</div>
+		
 
 <!-- Newsletter sign-up section -->
-			<section id="newsletter" aria-label="Newsletter subscription">
+			<section id="newsletter" aria-label="Newsletter subscription" hidden>
 				<div class="newsletter-inner">
 					<h2>Newsletter</h2>
 					<p>Get updates on new streams, learning content, and community news.</p>
@@ -199,6 +198,7 @@
 				</div>
 			</section>
 
+
 <!-- Contact accordion with EmailJS form -->
 			<section id="contact-us">
 				<h2 class="contact-accordion-title">
@@ -206,7 +206,7 @@
 						id="contactAccordionBtn"
 						type="button"
 						class="contact-accordion-toggle"
-						aria-expanded="false"
+						aria-expanded="true"
 						aria-controls="contactAccordionPanel"
 					>
 						<span class="contact-accordion-icon" aria-hidden="true">▸</span>
