@@ -102,23 +102,34 @@ const updatePageBackgroundShift = () => {
 	document.body.style.setProperty("--page-bg-shift", `${shift}px`);
 };
 
-window.addEventListener("scroll", updatePageBackgroundShift, { passive: true });
-window.addEventListener("load", updatePageBackgroundShift);
-window.addEventListener("resize", updatePageBackgroundShift);
+const updateBannerBlend = () => {
+	if (!(studioBanner instanceof HTMLElement)) return;
 
-if (studioBanner instanceof HTMLElement) {
-	const updateBannerBlend = () => {
-		const fadeDistance = 180;
-		const progress = Math.min(window.scrollY / fadeDistance, 1);
-		studioBanner.style.opacity = String(1 - progress);
-		studioBanner.style.transform = `translateY(${-14 * progress}px)`;
-		studioBanner.style.pointerEvents = progress > 0.96 ? "none" : "auto";
-	};
+	const fadeDistance = 180;
+	const progress = Math.min(window.scrollY / fadeDistance, 1);
+	studioBanner.style.opacity = String(1 - progress);
+	studioBanner.style.transform = `translateY(${-14 * progress}px)`;
+	studioBanner.style.pointerEvents = progress > 0.96 ? "none" : "auto";
+};
 
-	window.addEventListener("scroll", updateBannerBlend, { passive: true });
-	window.addEventListener("load", updateBannerBlend);
-	window.addEventListener("resize", updateBannerBlend);
-}
+const updateVisualEffects = () => {
+	updatePageBackgroundShift();
+	updateBannerBlend();
+};
+
+let visualUpdateRaf = 0;
+const scheduleVisualEffectsUpdate = () => {
+	if (visualUpdateRaf) return;
+
+	visualUpdateRaf = requestAnimationFrame(() => {
+		visualUpdateRaf = 0;
+		updateVisualEffects();
+	});
+};
+
+window.addEventListener("scroll", scheduleVisualEffectsUpdate, { passive: true });
+window.addEventListener("load", updateVisualEffects);
+window.addEventListener("resize", updateVisualEffects);
 
 const contactSuccessMessage = document.getElementById("form-success-message");
 const contactForm = document.getElementById("contact-form");
@@ -238,31 +249,3 @@ if (contactForm instanceof HTMLFormElement) {
 	});
 }
 
-document.addEventListener("contextmenu", (event) => {
-	event.preventDefault();
-});
-
-document.addEventListener("copy", (event) => {
-	event.preventDefault();
-});
-
-document.addEventListener("cut", (event) => {
-	event.preventDefault();
-});
-
-document.addEventListener("dragstart", (event) => {
-	event.preventDefault();
-});
-
-document.addEventListener("keydown", (event) => {
-	const key = event.key.toLowerCase();
-	const hasCtrlOrCmd = event.ctrlKey || event.metaKey;
-	const isDevToolsShortcut =
-		event.key === "F12" ||
-		(hasCtrlOrCmd && event.shiftKey && (key === "i" || key === "j" || key === "c")) ||
-		(hasCtrlOrCmd && key === "u");
-
-	if (isDevToolsShortcut) {
-		event.preventDefault();
-	}
-});

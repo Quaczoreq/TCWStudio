@@ -1,6 +1,7 @@
 /* Our Mission card styling */
 #our-mission {
-	margin: 4rem 18%;
+	width: 80%;
+	margin: 4rem auto;
 }
 
 #our-mission > div {
@@ -190,7 +191,6 @@ body::before {
 	position: relative;
 	padding-right: 0;
 	width: fit-content;
-	min-width: calc(2 * (var(--nav-links-width, 0px)));
 	margin: 0 auto;
 }
 
@@ -218,7 +218,7 @@ body::before {
 	color: #ffffff;
 	text-transform: none;
 	border-right: 2px solid #cfe081;
-	animation: none;
+	animation: bannerTyping 1.1s steps(27, end) 0.1s forwards, bannerCursor 0.6s step-end infinite;
 }
 
 @media (min-width: 901px) {
@@ -500,12 +500,18 @@ section {
 }
 
 section:hover {
-	animation: shake 0.5s ease-in-out;
+	animation: none;
 	box-shadow: 0 0 20px rgba(137, 162, 56, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 #hero:hover {
 	animation: none;
+}
+
+#featured-episode:hover,
+#featured-episode .featured-episode-card:hover {
+	animation: none;
+	transform: none;
 }
 
 @keyframes shake {
@@ -540,18 +546,16 @@ section.nav-click-fade {
 	overflow: hidden;
 	display: flex;
 	align-items: center;
-	padding: 3rem 0;
-	min-height: clamp(240px, 50vw, 620px);
+	justify-content: center;
+	padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
+	min-height: clamp(320px, 48vw, 620px);
 	width: 100vw;
-	margin-top: 1px;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	border-radius: 0;
-	border-left: none;
-	border-right: none;
-	background: rgba(137, 162, 56, 0.6);
+	max-width: 100vw;
+	margin: 1px calc(50% - 50vw) 2rem;
+	border-radius: 16px;
+	border: 1px solid rgba(207, 224, 129, 0.35);
+	background: linear-gradient(135deg, rgba(137, 162, 56, 0.72), rgba(17, 24, 39, 0.82));
 	isolation: isolate;
-	margin-bottom: 2rem;
 }
 
 #hero::before,
@@ -703,6 +707,16 @@ section.nav-click-fade {
 	animation: none;
 	filter: none;
 	color: #ffffff;
+}
+
+#floating-cards .team-intro {
+	position: relative;
+	z-index: 1;
+	max-width: 760px;
+	margin: 0.5rem auto 0.85rem;
+	padding: 0 1rem;
+	text-align: center;
+	color: #f8fafc;
 }
 
 #floating-cards:hover {
@@ -957,24 +971,218 @@ section.nav-click-fade {
 }
 
 #hero p {
+	max-width: 100%;
 	text-align: center;
 	font-size: clamp(1.05rem, 2.2vw, 1.35rem);
 	font-weight: 500;
 	line-height: 1.45;
+	overflow-wrap: anywhere;
+}
+
+#featured-episode,
+#support-growth {
+	width: 80%;
+	margin: 4rem auto;
+	background: var(--card);
+	border: 1px solid #89a238;
+	border-radius: 14px;
+	padding: 2rem 2.25rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#support-growth h2 {
+	margin-top: 0;
+	margin-bottom: 0.85rem;
+	text-align: center;
+}
+
+#support-growth:hover {
+	animation: none;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#support-growth .section-lead {
+	margin: 0;
+}
+
+.section-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	margin-bottom: 0.65rem;
+	padding: 0.2rem 0.65rem;
+	border-radius: 999px;
+	background: rgba(137, 162, 56, 0.16);
+	border: 1px solid rgba(137, 162, 56, 0.6);
+	color: #d9ec8d;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.section-lead {
+	max-width: 840px;
+	color: #d1d5db;
+}
+
+.hero-kicker {
+	margin-bottom: 0.85rem;
+	padding: 0.28rem 0.7rem;
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	border-radius: 999px;
+	background: rgba(15, 23, 42, 0.3);
+	font-size: 0.88rem !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.hero-description {
+	max-width: 900px;
+	margin: 1rem auto 0;
+	padding: 0.9rem 1.15rem;
+	color: #f3f4f6;
+	font-size: clamp(1rem, 2vw, 1.12rem) !important;
+	background: rgba(17, 24, 39, 0.55);
+	border: 1px solid #89a238;
+	border-radius: 14px;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hero-actions,
+.action-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem;
+	margin-top: 1.15rem;
+}
+
+.cta-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.72rem 1rem;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 700;
+	border: 1px solid transparent;
+	transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-button:hover {
+	filter: brightness(0.97);
+	transform: translateY(-1px);
+}
+
+.cta-button.primary {
+	background: #cfe081;
+	color: #111827;
+	border-color: #dff0a0;
+}
+
+.cta-button.secondary {
+	background: rgba(17, 24, 39, 0.55);
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.24);
+}
+
+.hero-pill-list {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.6rem;
+	padding: 0;
+	margin: 1rem 0 0;
+}
+
+.hero-pill-list li {
+	padding: 0.38rem 0.75rem;
+	border-radius: 999px;
+	background: rgba(15, 23, 42, 0.36);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: #ffffff;
+	font-size: 0.92rem;
+}
+
+.featured-episode-card {
+	margin-top: 1rem;
+	padding: 1.2rem;
+	border-radius: 12px;
+	border: 1px solid rgba(137, 162, 56, 0.5);
+	background: linear-gradient(180deg, rgba(31, 41, 55, 0.94), rgba(17, 24, 39, 0.92));
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.featured-episode-card h3,
+.impact-card h3 {
+	margin-bottom: 0.45rem;
+	color: #ffffff;
+}
+
+.episode-tag {
+	margin-bottom: 0.4rem;
+	color: #d9ec8d;
+	font-size: 0.88rem;
+	font-weight: 700;
+}
+
+.impact-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.impact-card {
+	padding: 1rem;
+	border-radius: 12px;
+	border: 1px solid rgba(137, 162, 56, 0.38);
+	background: rgba(15, 23, 42, 0.55);
+}
+
+.impact-card:hover {
+	animation: shake 0.5s ease-in-out;
+	box-shadow: 0 0 20px rgba(137, 162, 56, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.support-note {
+	margin-top: 1rem;
+	padding: 0.85rem 1rem;
+	border-radius: 10px;
+	background: rgba(137, 162, 56, 0.12);
+	border: 1px solid rgba(137, 162, 56, 0.36);
+	color: #eef5cf;
+}
+
+@media (max-width: 900px) {
+	#support-growth {
+		margin: 3rem auto;
+	}
+
+	#our-mission,
+	#featured-episode,
+	#support-growth {
+		width: 80%;
+	}
 }
 
 .hero-content {
 	display: grid;
 	justify-items: center;
 	position: relative;
+	width: min(100%, 960px);
+	gap: clamp(0.65rem, 1.8vw, 1rem);
+	padding-inline: clamp(0.25rem, 1.5vw, 0.75rem);
 }
 
 .hero-wide-lines {
 	position: absolute;
-	left: 50%;
-	top: -14px;
-	transform: translateX(-50%);
-	width: 100vw;
+	inset: 0 0 auto 0;
+	top: 0;
+	transform: none;
+	width: 100%;
 	height: clamp(90px, 20vw, 220px);
 	pointer-events: none;
 	background-image: repeating-linear-gradient(
@@ -990,8 +1198,8 @@ section.nav-click-fade {
 
 .hero-logo-shell {
 	position: relative;
-	width: min(40vw, 560px);
-	margin-top: -14px;
+	width: min(100%, clamp(220px, 42vw, 560px));
+	margin-top: 0;
 	overflow: hidden;
 	isolation: isolate;
 	animation: heroLogoNoise 3.2s steps(2, end) infinite;
@@ -1127,9 +1335,9 @@ section.nav-click-fade {
 .hero-prefix,
 .hero-subtext {
 	display: block;
-	width: fit-content;
-	transform: scaleX(1.3);
-	transform-origin: center;
+	max-width: 100%;
+	transform: none;
+	text-wrap: balance;
 }
 
 .hero-prefix {
@@ -1139,26 +1347,38 @@ section.nav-click-fade {
 .hero-emphasis {
 	display: block;
 	margin-top: 0;
-	font-size: clamp(2.2rem, 10vw, 6.2rem);
+	font-size: clamp(2rem, 8vw, 5.4rem);
 	font-weight: 800;
 	letter-spacing: 0.05em;
 	line-height: 0.98;
 	text-transform: uppercase;
+	text-wrap: balance;
 }
 
 .hero-subtext {
-	margin: 0.4rem auto 0;
+	width: fit-content;
+	margin: 0.55rem auto 0;
+	padding: 0.45rem 0.9rem;
 	color: #ffffff;
+	background: rgba(17, 24, 39, 0.55);
+	border: 1px solid #89a238;
+	border-radius: 14px;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .hero-flicker {
 	display: inline-flex;
 	align-items: baseline;
+	justify-content: center;
+	flex-wrap: wrap;
 	gap: 0.2em;
+	max-width: 100%;
 }
 
 .hero-flicker-word {
 	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 0.02em;
 }
 
@@ -1223,7 +1443,7 @@ section.nav-click-fade {
 	}
 
 	.studio-banner-inner {
-		width: 88%;
+		width: 0;
 	}
 
 	main {
@@ -1234,6 +1454,10 @@ section.nav-click-fade {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		column-gap: 0.85rem;
 		row-gap: 1.7rem;
+	}
+
+	.impact-grid {
+		grid-template-columns: 1fr;
 	}
 
 	section {
@@ -1280,6 +1504,20 @@ section.nav-click-fade {
 }
 
 @media (max-width: 640px) {
+
+	.hero-actions,
+	.action-row {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.cta-button {
+		width: 100%;
+	}
+
+	.impact-grid {
+		grid-template-columns: 1fr;
+	}
 
 	#floating-cards h2 {
 		width: 100vw;
